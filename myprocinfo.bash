@@ -19,34 +19,30 @@ do
  echo ""
  case $svar in
   1)clear
-    echo "Jeg er $(whoami)"
-    read -r
-    clear
+    echo "Jeg er $(whoami), navnet på dette scriptet er $(basename -- "$0")"
     ;;
   2)clear
-    echo "Jeg er $(whoami)"
-    read -r
-    clear
+    echo "Tid siden siste boot er: $(uptime -p)"
     ;;
   3)clear
-    echo "Jeg er $(whoami)"
-    read -r
-    clear
+    echo "Gjennomsnittlig load siste minutt: $(awk '{print $1}' /proc/loadavg)"
     ;;
   4)clear
-    echo "Jeg er $(whoami)"
-    read -r
-    clear
+    echo "Det finnes $(ps -AL --no-headers | wc -l) prosesser og $(ps axms | wc -l ) tråder"
     ;;
   5)clear
-    echo "Jeg er $(whoami)"
-    read -r
-    clear
+	before=$(grep "^ctxt" /proc/stat | awk '!($1="")')
+    sleep 1
+    after=$(grep "^ctxt" /proc/stat | awk '!($1="")')
+    difference=$((after-before))
+    echo "Antall context switch'er siste sekund var $difference"
     ;;
   6)clear
-    echo "Jeg er $(whoami)"
-    read -r
-    clear
+	before=$(grep "^intr" /proc/stat | awk '{print $2}')
+    sleep 1
+    after=$(grep "^intr" /proc/stat | awk '{print $2}')
+    difference=$((after-before))
+    echo "Antall interrupts siste sekund: $difference"
     ;;
   9)echo Scriptet avsluttet
     exit
