@@ -20,7 +20,8 @@ echo "Gjennomsnittlig filstørrelse er ca $averageFileSize bytes"
 mostHardlinks=0
 mostHardlinksFile=""
 
-for file in $(find "$dir" -type f)
+#for file in $(find "$dir" -type f)
+while read -r -d '' file
 do
 	hardlinks=$(stat -c "%h" "$file")
   	if [ "$hardlinks" -gt "$mostHardlinks" ]
@@ -28,6 +29,6 @@ do
     mostHardlinks=$hardlinks
     mostHardlinksFile="$file"
   	fi
-done
+done <	<(find "$dir" -type f -print0)
 
 echo "Filen $mostHardlinksFile har flest hardlinks, den har $mostHardlinks."
