@@ -11,10 +11,7 @@ SE OPPGAVETEKST I KOMPENDIET. HUSK Å REDIGER TEKSTEN NEDENFOR!
 
 ## Gruppemedlemmer
 
-**TODO: Erstatt med navn på gruppemedlemmene**
-
-* Ola Eksempel
-* Kari Mal
+* Joakim Vetle Berg
 
 ## Sjekkliste
 
